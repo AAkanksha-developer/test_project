@@ -16,7 +16,20 @@ app.use('/api/order', orderRouter);
 app.use('/api/payment', paymentRouter);
 app.use('/api/product', productRouter);
 app.use('/api/user', userRouter);
+const escrowRoutes =
+  require("./routes/escrowRoutes");
 
+app.use(
+  "/api/v1/escrow",
+  escrowRoutes
+);
+const tokenLedgerRoutes =
+    require("./routes/tokenLedgerRoutes");
+
+app.use(
+    "/api/v1/token",
+    tokenLedgerRoutes
+);
 // deployment
 __dirname = path.resolve();
 if (process.env.NODE_ENV === "production") {
